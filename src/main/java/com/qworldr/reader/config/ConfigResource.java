@@ -21,6 +21,9 @@ public class ConfigResource  extends ClassPathResource {
         if (StringUtils.isEmpty(path)) {
             path=configFormat.getPath();
         }
+        if(path.startsWith("/")){
+            path=path.substring(1);
+        }
         if (StringUtils.isEmpty(suffix)) {
             suffix=configFormat.getSuffix();
         }
@@ -43,6 +46,10 @@ public class ConfigResource  extends ClassPathResource {
         this.dir=dir;
         this.suffix=suffix;
 
+    }
+    public String getRelativePath(){
+        StringBuilder stringBuilder=new StringBuilder(this.getDir()).append(File.separator);
+        return stringBuilder.append(this.getFilename()).append(".").append(this.getSuffix()).toString();
     }
 
     public String getDir() {
