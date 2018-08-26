@@ -35,7 +35,6 @@ public class ConfigAwareBeanProcessor extends InstantiationAwareBeanPostProcesso
         }
         ConfigResource configDefinition = ConfigResource.valueOf(annotation,aClass,defaultFormat);
         loadResource(bean,configDefinition);
-        System.out.println("..............................");
         return bean;
     }
 
