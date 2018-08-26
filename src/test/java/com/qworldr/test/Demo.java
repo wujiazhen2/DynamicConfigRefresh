@@ -1,5 +1,6 @@
 package com.qworldr.test;
 
+import com.qworldr.test.config.Test2Config;
 import com.qworldr.test.config.TestConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +14,16 @@ public class Demo {
     @Autowired
     private TestConfig testContext;
 
+    @Autowired
+    private Test2Config test2Config;
+
     @Test
-    public void  test1(){
+    public void  test1() throws InterruptedException {
         System.out.println(testContext);
+        System.out.println(test2Config);
+        //测试文件动态更新，更改test-classes里面的配置文件,或更改test下的编译一次
+        Thread.sleep(30000);
+        System.out.println(testContext);
+        System.out.println(test2Config);
     }
 }

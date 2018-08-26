@@ -6,11 +6,12 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-@Config(value = "test",reload = true)
-public class TestConfig {
+@Config
+public class Test2Config {
     private Date time;
     private Integer code;
     private String test;
+
     public Date getTime() {
         return time;
     }
@@ -22,9 +23,10 @@ public class TestConfig {
     public String getTest() {
         return test;
     }
+
     @Override
     public String toString() {
-        return "TestConfig{" +
+        return "Test2Config{" +
                 "time=" + time +
                 ", code=" + code +
                 ", test='" + test + '\'' +
