@@ -58,12 +58,12 @@ public class ConfigAwareBeanProcessor extends InstantiationAwareBeanPostProcesso
         这种情况下，就会造成onApplicationEvent方法被执行两次。所以要判断一下。
          */
         if(!beginListener && files!=null &&files.size()>0){
+            //默认10秒刷新一次文件
+            FileAlterationMonitor fileAlterationMonitor = new FileAlterationMonitor();
             files.forEach((k,v)->{
                 FileAlterationObserver fileAlterationObserver = new FileAlterationObserver(this.getClass().getClassLoader().getResource(k).getPath(),new NameFileFilter(v));
                 FileAlterationListener fileAlterationReload =new FileAlterationReload();
                 fileAlterationObserver.addListener(fileAlterationReload);
-                //默认10秒刷新一次文件
-                FileAlterationMonitor fileAlterationMonitor = new FileAlterationMonitor();
                 fileAlterationMonitor.addObserver(fileAlterationObserver);
                 try {
                     fileAlterationMonitor.start();
