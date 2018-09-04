@@ -40,8 +40,7 @@ public class ResourcerManager {
         try {
             configResourceMap.put(configResource.getFile().getPath(),configResource);
         } catch (IOException e) {
-            LOGGER.error(String.format("%s读取失败",configResource.getPath()));
-            return null;
+            LOGGER.error(String.format("%d读取失败",configResource.getPath()));
         }
         Reader reader = getReader(configResource.getSuffix());
         Map<String, String> read = reader.read(configResource);
